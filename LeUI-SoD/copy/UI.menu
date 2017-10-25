@@ -4116,11 +4116,6 @@ menu
 	}
 	label
 	{
-		area 95 70 52 52
-		icon lua "itemDesc.item.icon"
-	}
-	label
-	{
 		area 282 67 300 50
 		text lua "itemDesc.item.name"
 		text align center center
