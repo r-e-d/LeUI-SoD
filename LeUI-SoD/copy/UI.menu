@@ -4061,7 +4061,7 @@ function itemDescRightButtonAction()
 	end
 end
 function computeSplitPosition(str, name)
-	splitPos = str:byte() < 194 and 2 or -1
+	splitPos = (str:len() > 0 and str:byte() < 194) and 2 or -1
 	curPos = splitPos
 	while splitPos ~= -1 do
 		local b = str:byte(curPos)
@@ -6323,9 +6323,17 @@ function onCampaignButton(buttonNum)
 	currentCampaign = buttonNum
 end
 
+function getTutorialEnabled()
+	--Tutorial and campaign import should never be enabled for the same campaign - the button uses the same space
+	if eetState == 0 then
+		return logoFrame == 0
+	end
+	return startCampaignData[currentCampaign].tutorialEnabled
+end
+
 function getCampaignImportEnabled()
 	if eetState == 0 then
-		return true
+		return logoFrame ~= 0
 	end
 	return startCampaignData[currentCampaign].importEnabled
 end
@@ -6948,6 +6956,21 @@ menu
 		"
 			Infinity_PopMenu()
 			startEngine:OnPreGenerateButtonClick()
+		"
+	}
+	button
+	{
+		bam STARTMBT
+		enabled "getTutorialEnabled()"
+		sequence 1
+		area 705 390 237 70
+		text style "button"
+		text "TUTORIAL_BUTTON"
+		action
+		"
+			Infinity_PopMenu()
+			startEngine:OnTutorialButtonClick()
+			lastStartMenu = 'START_SP'
 		"
 	}
 	button
