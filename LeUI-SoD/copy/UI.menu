@@ -15416,7 +15416,7 @@ menu
 	button
 	{
 		enabled "chargen.levelingUp"
-		area 334 60 201 44
+		area 334 98 201 44
 		bam GUIOSTLM
 		text "INFORMATION_BUTTON"
 		text style "button"
@@ -16510,13 +16510,13 @@ menu
 	ignoreesc
 	onOpen
 	"
-		charNameEdit = ''
 		Infinity_PlaySound('GAM_03')
 		if chargen.name then
 			charNameEdit = chargen.name
+		else
+			charNameEdit = ''
+			Infinity_FocusTextEdit('charNameEditArea')
 		end
-		Infinity_FocusTextEdit('charNameEditArea')
-		Infinity_ClickScreen()
 	"
 	onClose
 	"
@@ -16533,10 +16533,15 @@ menu
 		text "ENTER_NAME_LABEL"
 		text style "title"
 	}
+	label
+	{
+		area 102 116 210 34
+		fill 112 111 111 64
+	}
 	edit
 	{
 		name		"charNameEditArea"
-		area		100 146 208 42
+		area		108 122 204 24
 		var			charNameEdit
 		text style	"edit"
 		maxlines	1
