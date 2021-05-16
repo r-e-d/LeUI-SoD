@@ -4270,7 +4270,7 @@ menu
 	modal
 	onOpen
 	"
-		Infinity_PlaySound('GAM_03')
+		-- Infinity_PlaySound('GAM_03')
 		computeSplitPosition(itemDesc.item.description, 'itemDescriptionSplit')
 	"
 	onClose
@@ -4392,6 +4392,7 @@ menu
 		area		327 638 201 44
 		text  "DONE_BUTTON"
 		text style "button"
+		sound ""
 		action
 		"
 			Infinity_PopMenu()
@@ -7877,6 +7878,7 @@ menu
 		hidehighlight
 		table "makeTable(math.ceil(#bookSpells / 4))"
 		var currentBookSpell
+		sound ""
 		action
 		"
 			local idx = 4 * (currentBookSpell - 1) + cellNumber
@@ -8134,6 +8136,7 @@ menu
 		hidehighlight
 		table "makeTable(math.ceil(#bottomSpellsPlaceHolder / 4))"
 		var currentBottomSpell
+		sound ""
 		action
 		"
 			local idx = 4 * (currentBottomSpell - 1) + cellNumber
@@ -8397,6 +8400,7 @@ menu
 		hidehighlight
 		table "bookSpells"
 		var currentBookSpell
+		sound ""
 		action
 		"
 			contingencyDescription = mageBookStrings[contingencyResRef].tip
@@ -8473,6 +8477,7 @@ menu
 		hidehighlight
 		table "bottomSpells"
 		var currentBottomSpell
+		sound ""
 		action
 		"
 			if bottomSpells[currentBottomSpell] then
@@ -8686,6 +8691,7 @@ menu
 	modal
 	onOpen
 	"
+		Infinity_PlaySound('GAM_03')
 		if(e:GetActiveEngine() == worldScreen) then
 			worldScreenWasPaused = worldScreen:CheckIfPaused()
 			if worldScreenWasPaused == false then
@@ -8706,6 +8712,7 @@ menu
 			end
 			worldScreenWasPaused = false
 		end
+		Infinity_PlaySound('GAM_04')
 	"
 	label
 	{
@@ -8818,6 +8825,7 @@ menu
 		bam GUIOSTUM
 		text "DONE_BUTTON"
 		text style "button"
+		sound ""
 		action "Infinity_PopMenu('SPELL_DESCRIPTION')"
 	}
 	button
@@ -9005,7 +9013,12 @@ menu
 	modal
 	onOpen
 	"
+		Infinity_PlaySound('GAM_03')
 		computeSplitPosition(Infinity_FetchString(PopupDetails.description), 'popupDetailsSplit')
+	"
+	onClose
+	"
+		Infinity_PlaySound('GAM_04')
 	"
 	label
 	{
@@ -9096,6 +9109,7 @@ menu
 		text "DONE_BUTTON"
 		text style "button"
 		on escape
+		sound ""
 		action
 		"
 			Infinity_PopMenu('POPUP_DETAILS')
@@ -9385,6 +9399,7 @@ menu
 		hidehighlight
 		table "makeTable(math.ceil(#characters[id].priestSpells[currentSpellLevel] / 4))"
 		var currentBookSpell
+		sound ""
 		action
 		"
 			local idx = 4 * (currentBookSpell - 1) + cellNumber
@@ -9642,6 +9657,7 @@ menu
 		hidehighlight
 		table "makeTable(math.ceil(#bottomSpellsPlaceHolder / 4))"
 		var currentBottomSpell
+		sound ""
 		action
 		"
 			local idx = 4 * (currentBottomSpell - 1) + cellNumber
